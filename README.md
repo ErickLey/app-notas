@@ -1,97 +1,77 @@
-# App Notas
+# Práctica de Trabajo Colaborativo (Tienda Tecsup)
 
-![Licencia](https://img.shields.io/badge/licencia-MIT-green)
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![Estado](https://img.shields.io/badge/estado-en%20desarrollo-yellow)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+![Licencia MIT](https://img.shields.io/badge/Licencia-MIT-green?style=for-the-badge)
 
-Una aplicación web sencilla para crear, guardar y gestionar notas directamente en tu navegador usando LocalStorage.
+Repositorio para el aprendizaje de flujos de trabajo colaborativo (Forks, Issues, Pull Requests) en Git y GitHub, utilizando como base una tienda web.
 
-## Tabla de contenidos
-- [Instalacion](#instalacion)
+## Tabla de Contenidos
+
+- [Instalación](#instalación)
 - [Uso](#uso)
-- [Estado de las funciones](#estado-de-las-funciones)
-- [Hoja de ruta](#hoja-de-ruta)
-- [Ejemplos de codigo](#ejemplos-de-codigo)
+- [Características](#características)
+- [Hoja de Ruta](#hoja-de-ruta)
 - [Arquitectura](#arquitectura)
-- [Contribucion](#contribucion)
+- [Contribución](#contribución)
 - [Licencia](#licencia)
+- [Autor](#autor)
 
-## Instalacion
-No requiere instalación de dependencias. Solo necesitas un navegador web moderno.
+## Instalación
+
+Clona el repositorio en tu máquina local usando Bash:
+
+```bash
+git clone https://github.com/ErickLey/tienda-tecsup.git
+cd tienda-tecsup
+```
 
 ## Uso
-Abre el archivo `index.html` en tu navegador, escribe una nota en el campo de texto y presiona "Agregar".
 
+Abre el archivo index.html en tu navegador. El cálculo del carrito procesa los ítems de esta manera:
 
-## Instalacion
-No requiere instalación de dependencias. Solo necesitas un navegador web moderno.
+```javascript
+function calcularTotal(lista) {
+    let total = 0;
+    for (const producto of lista) {
+        total = total + producto.precio * producto.cantidad;
+    }
+    return total;
+}
+```
 
-## Uso
-Abre el archivo `index.html` en tu navegador, escribe una nota en el campo de texto y presiona "Agregar".
-## Estado de las funciones 
-  
-| Funcion | Estado | Prioridad | 
-|:--------|:------:|----------:| 
-| Agregar nota | Listo | Alta | 
-| Eliminar nota | En curso | Media | 
-| Guardar en el navegador | Pendiente | Baja | 
-  
-## Hoja de ruta
+## Características
 
-- [x] Diseno de la pantalla
-- [x] Agregar notas a la lista
-- [ ] Eliminar notas
-- [ ] Guardar con localStorage
+| Función | Estado | Descripción |
+| :--- | :---: | :--- |
+| Cálculo del total | ✅ Activo | Multiplica precio por cantidad correctamente |
+| Carga de CSS | ✅ Activo | Vinculación correcta de hoja de estilos |
+| Carrito persistente | ❌ Pendiente | Guardado de ítems en localStorage |
 
-## Ejemplos de codigo 
-  
-Estructura del formulario: 
-  
-```html 
-<input id="nota" placeholder="Escribe una nota"> 
-<button onclick="agregar()">Agregar</button> 
-``` 
-  
-Funcion que agrega la nota: 
-  
-```js 
-function agregar() { 
-  const texto = document.getElementById("nota").value; 
-   console.log("Nota agregada:", texto); 
-} 
-``` 
-  
-Ejemplo de nota guardada: 
-  
-```json 
-{ "id": 1, "texto": "Estudiar Markdown", "hecha": false } 
-``` 
+## Hoja de Ruta
+
+- [x] Corregir función del cálculo total en script.js
+- [x] Corregir enlace de hojas de estilo en index.html
+- [ ] Implementar vista previa de imágenes para productos
+
 ## Arquitectura
 
 ```mermaid
-graph LR
-A[Usuario] --> B[Frontend]
-B --> C[API]
-C --> D[(Base de datos)]
+graph TD;
+    Usuario -->|Interactúa| Frontend[index.html];
+    Frontend -->|Llama funciones| JS[script.js];
+    JS -->|Aplica estilos| CSS[estilos.css];
 ```
 
-### Flujo para agregar una nota
+## Contribución
 
-```mermaid 
-graph TD
-A[Escribir la nota] --> B{Esta vacia?} 
-B -- Si --> C[Mostrar aviso]
-B -- No --> D[Agregar a la lista] 
-D --> E[Limpiar el campo]
-```
-## Contribucion
+Lee la [guía de contribución](CONTRIBUTING.md) antes de enviar cambios.
 
 1. Haz un fork del repositorio.
-2. Crea una rama: `git checkout -b mejora/mi-cambio`
-3. Guarda tus cambios: `git commit -m "Describe tu cambio"`
-4. Sube la rama: `git push origin mejora/mi-cambio`
-5. Abre un Pull Request explicando que mejoraste.
+2. Crea una rama: git checkout -b mejora/mi-cambio
+3. Guarda tus cambios: git commit -m "Describe tu cambio"
+4. Sube la rama: git push origin mejora/mi-cambio
+5. Abre un Pull Request explicando qué mejoraste.
 
 ## Licencia
 
